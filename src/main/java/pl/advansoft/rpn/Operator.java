@@ -2,29 +2,29 @@ package pl.advansoft.rpn;
 
 public enum Operator {
 
-	PLUS('+') {
+	PLUS("+") {
 		@Override
-		public Integer calc(int a, int b) {
+		public int calc(int a, int b) {
 			return a + b;
 		}
 	},
 
-	MINUS('-') {
+	MINUS("-") {
 		@Override
-		public Integer calc(int a, int b) {
+		public int calc(int a, int b) {
 			return a - b;
 		}
 	};
 
-	private Operator(char c) {
-		this.m = c;
+	private Operator(String mark) {
+		this.mark = mark;
 	}
 
-	private char m;
+	private String mark;
 
-	public boolean mark(char c) {
-		return m == c;
+	public boolean mark(String m) {
+		return mark.equals(m);
 	}
 
-	public abstract Integer calc(int a, int b);
+	public abstract int calc(int a, int b);
 }

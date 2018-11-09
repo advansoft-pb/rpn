@@ -21,16 +21,20 @@ public class Value {
 	}
 
 	public boolean isOperator() {
-		return "+".equals(str) || "-".equals(str);
+		for (Operator op : Operator.values()) {
+			if (op.mark(str)) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	public Operator operator() {
-		if ("+".equals(str)) {
-			return Operator.PLUS;
-		}
-
-		if ("-".equals(str)) {
-			return Operator.MINUS;
+		for (Operator op : Operator.values()) {
+			if (op.mark(str)) {
+				return op;
+			}
 		}
 
 		return null;
