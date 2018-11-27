@@ -1,30 +1,25 @@
 package pl.advansoft.rpn;
 
-public enum Operator {
+import java.util.HashSet;
+import java.util.Set;
 
-	PLUS("+") {
-		@Override
-		public int calc(int a, int b) {
-			return a + b;
-		}
-	},
+public abstract class Operator {
 
-	MINUS("-") {
-		@Override
-		public int calc(int a, int b) {
-			return a - b;
-		}
-	};
-
-	private Operator(String mark) {
-		this.mark = mark;
+	public static Operator getInstance() {
+		return null;
 	}
 
-	private String mark;
+	private static final Set<Operator> subclasses = new HashSet<>();
 
-	public boolean mark(String m) {
-		return mark.equals(m);
+	protected Operator() {
+		subclasses.add(this);
 	}
+
+	public static Set<Operator> values() {
+		return subclasses;
+	}
+
+	public abstract boolean mark(String m);
 
 	public abstract int calc(int a, int b);
 }

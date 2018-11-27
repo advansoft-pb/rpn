@@ -7,6 +7,11 @@ import java.util.Stack;
 
 public class RpnCalculator {
 
+	static {
+		Plus.getInstance();
+		Minus.getInstance();
+	}
+
 	public static int calculate(List<Value> values) throws RpnException {
 		Stack<Value> valueStack = new Stack<>();
 		Iterator<Value> iterator = values.iterator();

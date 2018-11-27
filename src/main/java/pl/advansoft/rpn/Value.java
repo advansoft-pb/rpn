@@ -24,7 +24,7 @@ public class Value {
 		return str.matches("[0-9]+");
 	}
 
-	public boolean isOperator() {
+	public boolean isOperator() throws RpnException {
 		for (Operator op : Operator.values()) {
 			if (op.mark(str)) {
 				return true;
@@ -34,7 +34,7 @@ public class Value {
 		return false;
 	}
 
-	public Operator operator() {
+	public Operator operator() throws RpnException {
 		for (Operator op : Operator.values()) {
 			if (op.mark(str)) {
 				return op;
