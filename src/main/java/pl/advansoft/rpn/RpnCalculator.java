@@ -8,11 +8,13 @@ public class RpnCalculator {
 
 	private Stack<Value> valueStack = new Stack<>();
 
-	public void clear() {
+	private void clear() {
 		valueStack.clear();
 	}
 
 	public void putList(List<Value> values) {
+		clear();
+
 		try {
 			putListByIterator(values.iterator());
 		} catch (Exception e) {
