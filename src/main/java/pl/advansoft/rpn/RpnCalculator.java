@@ -12,7 +12,7 @@ public class RpnCalculator {
 		valueStack.clear();
 	}
 
-	private void putList(List<Value> values) {
+	private void putList(List<Value> values) throws RpnException {
 		clear();
 
 		try {
@@ -37,7 +37,7 @@ public class RpnCalculator {
 		}
 	}
 
-	private int getResult() {
+	private int getResult() throws RpnException {
 		try {
 			return valueStack.pop().getInt();
 		} catch (Exception e) {
@@ -45,9 +45,8 @@ public class RpnCalculator {
 		}
 	}
 
-	public int calculate(List<Value> values) {
+	public int calculate(List<Value> values) throws RpnException {
 		putList(values);
 		return getResult();
 	}
-
 }

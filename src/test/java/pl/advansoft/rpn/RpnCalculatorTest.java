@@ -12,7 +12,7 @@ public class RpnCalculatorTest {
 	private RpnCalculator calculator = new RpnCalculator();
 
 	@Test
-	public void testCalc3() {
+	public void testCalc3() throws RpnException {
 		List<Value> param = new ArrayList<>();
 		param.add(new Value("1"));
 		param.add(new Value("2"));
@@ -23,7 +23,7 @@ public class RpnCalculatorTest {
 	}
 
 	@Test
-	public void testCalcM1() {
+	public void testCalcM1() throws RpnException {
 		List<Value> param = new ArrayList<>();
 		param.add(new Value("2"));
 		param.add(new Value("2"));
@@ -36,7 +36,7 @@ public class RpnCalculatorTest {
 	}
 
 	@Test
-	public void testCalc46240() {
+	public void testCalc46240() throws RpnException {
 		List<Value> param = new ArrayList<>();
 		param.add(new Value("2342"));
 		param.add(new Value("43563"));
@@ -53,7 +53,7 @@ public class RpnCalculatorTest {
 	}
 
 	@Test(expected = RpnException.class)
-	public void testCalcEx() {
+	public void testCalcEx() throws RpnException {
 		List<Value> param = new ArrayList<>();
 		param.add(new Value("+"));
 		param.add(new Value("43"));
