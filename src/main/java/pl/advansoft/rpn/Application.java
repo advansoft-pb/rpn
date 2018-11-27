@@ -1,6 +1,8 @@
 package pl.advansoft.rpn;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Application {
 
@@ -21,19 +23,15 @@ public class Application {
 			return;
 		}
 
+		String[] strings = args[0].split("\\s+");
+		List<Value> values = Stream.of(strings).map(Value::new).collect(Collectors.toList());
+
 		try {
-			int result = calculate(args[0]);
+			int result = calculator.calculate(values);
 			System.out.println("The result is: " + result);
 		} catch (RpnException e) {
 			System.out.println("Wrong input information");
 		}
-	}
-
-	int calculate(String text) {
-		String[] strings = Utils.split(text);
-		List<Value> values = Utils.asValues(strings);
-		calculator.putList(values);
-		return calculator.getResult();
 	}
 
 	public static void main(String[] args) {

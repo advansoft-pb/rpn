@@ -12,7 +12,7 @@ public class RpnCalculator {
 		valueStack.clear();
 	}
 
-	public void putList(List<Value> values) {
+	private void putList(List<Value> values) {
 		clear();
 
 		try {
@@ -22,7 +22,7 @@ public class RpnCalculator {
 		}
 	}
 
-	void putListByIterator(Iterator<Value> iterator) {
+	private void putListByIterator(Iterator<Value> iterator) {
 		while (iterator.hasNext()) {
 			Value val = iterator.next();
 
@@ -37,11 +37,17 @@ public class RpnCalculator {
 		}
 	}
 
-	public int getResult() {
+	private int getResult() {
 		try {
 			return valueStack.pop().getInt();
 		} catch (Exception e) {
 			throw new RpnException(e);
 		}
 	}
+
+	public int calculate(List<Value> values) {
+		putList(values);
+		return getResult();
+	}
+
 }

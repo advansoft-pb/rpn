@@ -18,8 +18,7 @@ public class RpnCalculatorTest {
 		param.add(new Value("2"));
 		param.add(new Value("+"));
 
-		calculator.putList(param);
-		int result = calculator.getResult();
+		int result = calculator.calculate(param);
 		assertEquals(3, result);
 	}
 
@@ -32,8 +31,7 @@ public class RpnCalculatorTest {
 		param.add(new Value("+"));
 		param.add(new Value("-"));
 
-		calculator.putList(param);
-		int result = calculator.getResult();
+		int result = calculator.calculate(param);
 		assertEquals(-1, result);
 	}
 
@@ -50,8 +48,7 @@ public class RpnCalculatorTest {
 		param.add(new Value("-"));
 		param.add(new Value("+"));
 
-		calculator.putList(param);
-		int result = calculator.getResult();
+		int result = calculator.calculate(param);
 		assertEquals(46240, result);
 	}
 
@@ -62,18 +59,6 @@ public class RpnCalculatorTest {
 		param.add(new Value("43"));
 		param.add(new Value("1"));
 
-		calculator.putList(param);
-	}
-
-	private Application app = Application.getInstance();
-
-	@Test
-	public void testApp298() {
-		assertEquals(298, app.calculate("234 87 + 23 -"));
-	}
-
-	@Test(expected = RpnException.class)
-	public void testAppEx() {
-		app.calculate("-");
+		calculator.calculate(param);
 	}
 }
