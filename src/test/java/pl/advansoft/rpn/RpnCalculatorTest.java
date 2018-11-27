@@ -9,8 +9,6 @@ import org.junit.Test;
 
 public class RpnCalculatorTest {
 
-	private RpnCalculator calculator = new RpnCalculator();
-
 	@Test
 	public void testCalc3() throws RpnException {
 		List<Value> param = new ArrayList<>();
@@ -18,7 +16,7 @@ public class RpnCalculatorTest {
 		param.add(new Value("2"));
 		param.add(new Value("+"));
 
-		int result = calculator.calculate(param);
+		int result = RpnCalculator.calculate(param);
 		assertEquals(3, result);
 	}
 
@@ -31,7 +29,7 @@ public class RpnCalculatorTest {
 		param.add(new Value("+"));
 		param.add(new Value("-"));
 
-		int result = calculator.calculate(param);
+		int result = RpnCalculator.calculate(param);
 		assertEquals(-1, result);
 	}
 
@@ -48,7 +46,7 @@ public class RpnCalculatorTest {
 		param.add(new Value("-"));
 		param.add(new Value("+"));
 
-		int result = calculator.calculate(param);
+		int result = RpnCalculator.calculate(param);
 		assertEquals(46240, result);
 	}
 
@@ -59,6 +57,6 @@ public class RpnCalculatorTest {
 		param.add(new Value("43"));
 		param.add(new Value("1"));
 
-		calculator.calculate(param);
+		RpnCalculator.calculate(param);
 	}
 }

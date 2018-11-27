@@ -5,24 +5,10 @@ import java.util.List;
 import java.util.Stack;
 
 public class RpnCalculator {
+	public static int calculate(List<Value> values) throws RpnException {
+		Stack<Value> valueStack = new Stack<>();
 
-	private Stack<Value> valueStack = new Stack<>();
-
-	private void clear() {
-		valueStack.clear();
-	}
-
-	private void putList(List<Value> values) throws RpnException {
-		clear();
-
-		try {
-			putListByIterator(values.iterator());
-		} catch (Exception e) {
-			throw new RpnException(e);
-		}
-	}
-
-	private void putListByIterator(Iterator<Value> iterator) {
+		Iterator<Value> iterator = values.iterator();
 		while (iterator.hasNext()) {
 			Value val = iterator.next();
 
@@ -35,18 +21,7 @@ public class RpnCalculator {
 				valueStack.push(new Value(String.valueOf(x)));
 			}
 		}
-	}
 
-	private int getResult() throws RpnException {
-		try {
-			return valueStack.pop().getInt();
-		} catch (Exception e) {
-			throw new RpnException(e);
-		}
-	}
-
-	public int calculate(List<Value> values) throws RpnException {
-		putList(values);
-		return getResult();
+		return valueStack.pop().getInt();
 	}
 }

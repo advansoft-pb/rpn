@@ -12,8 +12,12 @@ public class Value {
 		return str;
 	}
 
-	public int getInt() {
-		return Integer.parseInt(str);
+	public int getInt() throws RpnException {
+		try {
+			return Integer.parseInt(str);
+		} catch (NumberFormatException e) {
+			throw new RpnException(e);
+		}
 	}
 
 	public boolean isNumber() {

@@ -6,16 +6,9 @@ import java.util.stream.Stream;
 
 public class Application {
 
-	private Application() {
+	public static void main(String[] args) {
+		new Application().run(args);
 	}
-
-	private static final Application INSTANCE = new Application();
-
-	public static Application getInstance() {
-		return INSTANCE;
-	}
-
-	private RpnCalculator calculator = new RpnCalculator();
 
 	public void run(String[] args) {
 		if (args.length == 0) {
@@ -27,14 +20,10 @@ public class Application {
 		List<Value> values = Stream.of(strings).map(Value::new).collect(Collectors.toList());
 
 		try {
-			int result = calculator.calculate(values);
+			int result = RpnCalculator.calculate(values);
 			System.out.println("The result is: " + result);
 		} catch (RpnException e) {
 			System.out.println("Wrong input information");
 		}
-	}
-
-	public static void main(String[] args) {
-		getInstance().run(args);
 	}
 }
