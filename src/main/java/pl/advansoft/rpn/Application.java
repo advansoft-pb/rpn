@@ -10,13 +10,19 @@ public class Application {
 		new Application().run(args);
 	}
 
+	private TextProvider textProvider;
+
 	public void run(String[] args) {
 		if (args.length == 0) {
 			System.out.println("This application requires one parameter\nNone has been provided");
 			return;
 		}
 
-		String[] strings = args[0].split("\\s+");
+		textProvider = new SimpleTextProvider(args[0]);
+
+		String text = textProvider.getText();
+
+		String[] strings = text.split("\\s+");
 		List<Value> values = Stream.of(strings).map(Value::new).collect(Collectors.toList());
 
 		try {
